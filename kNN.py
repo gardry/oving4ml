@@ -1,6 +1,7 @@
 # k nearest neighbours
 import numpy as np
 from operator import itemgetter
+import math
 
 def readInput(filename): #reads input from file and returns python numpy array
 	f=open(filename)
@@ -13,11 +14,11 @@ def readInput(filename): #reads input from file and returns python numpy array
 			retArray[rowI][colI]=float(retArray[rowI][colI].strip("\n")) 
 	return np.array(retArray)
 
-def distance(point1,point2): #Computes sum-of squares for the distance between two points
+def distance(point1,point2): #Computes square root of sum-of squares for the distance between two points
 	dist=0
 	for coordinates in range(len(point1)):
 		dist+=(point1[coordinates]-point2[coordinates])**2
-	return dist
+	return math.sqrt(dist)
 
 
 def runkNN(testPoint,k): #Runs kNN classification algorithm
